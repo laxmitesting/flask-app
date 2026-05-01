@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-test-deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     permissions:
       contents: read
@@ -22,7 +22,7 @@ jobs:
       # 1. Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       # Debug step to verify files are present (optional)
       - name: Debug - List Files
         run: ls -R
