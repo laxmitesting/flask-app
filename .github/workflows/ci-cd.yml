@@ -42,11 +42,14 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      # 5. Build Docker image
+# 5. Build Docker image
       - name: Build image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          # This tells Docker to look inside the 'flask-app' folder
+          context: ./flask-app
+          # This tells Docker exactly where the Dockerfile is located
+          file: ./flask-app/Dockerfile
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           load: true
